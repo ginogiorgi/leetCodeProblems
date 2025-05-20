@@ -9,10 +9,10 @@ function isValid(s) {
     for (let char of s) {
         if (!pairs[char]) {
             stack.push(char);
+        } else if (!stack.length || stack[stack.length - 1] !== pairs[char]) {
+            return false;
         } else {
-            if (!stack.length || stack.pop() !== pairs[char]) {
-                return false;
-            }
+            stack.pop();
         }
     }
 
